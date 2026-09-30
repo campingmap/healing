@@ -1,522 +1,388 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>원산도 힐링 여행</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
-/* 단일 컬럼 · 모바일 우선. 시간 레일을 따라 일정이 흐르고, 프로그램 카드와 준비물 체크리스트가 뒤따른다. 하단 고정 문의 바. */
+/* 에디토리얼 · 모바일 우선. 사진 히어로 → 요약 → 시간 레일 → 번호 매긴 장소 → 준비물 → 문의. */
 :root{
-  --bg:#EDF0EE;
-  --surface:#FBFCFB;
-  --ink:#19231F;
-  --ink-soft:#5A6863;
-  --line:#D5DCD8;
-  --sea:#12565C;
-  --sea-soft:#E0EBEA;
-  --ochre:#A96A2E;
-  --ochre-soft:#F3E8DC;
-  --font-display:"Gowun Batang",'Nanum Myeongjo',serif;
-  --font-body:"IBM Plex Sans KR",-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --bg:#F6F2EA;
+  --ink:#1B231F;
+  --ink-soft:#5B645E;
+  --line:#DCD5C6;
+  --forest:#1E4A3C;
+  --forest-soft:#E4EAE2;
+  --accent:#B4432D;
+  --font-display:"Gowun Batang","Nanum Myeongjo",serif;
+  --font-body:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --bg:#101614;
-    --surface:#18201D;
-    --ink:#E8EEEA;
-    --ink-soft:#9AA8A3;
-    --line:#2A3531;
-    --sea:#6FC2C4;
-    --sea-soft:#17302F;
-    --ochre:#D9A16A;
-    --ochre-soft:#2C2319;
+  :root{
+    --bg:#121815;
+    --ink:#ECE8DF;
+    --ink-soft:#A3ADA7;
+    --line:#2B3630;
+    --forest:#8CCBB2;
+    --forest-soft:#1B2A24;
+    --accent:#E58A70;
     color-scheme:dark;
   }
 }
-:root[data-theme="dark"]{
-  --bg:#101614;
-  --surface:#18201D;
-  --ink:#E8EEEA;
-  --ink-soft:#9AA8A3;
-  --line:#2A3531;
-  --sea:#6FC2C4;
-  --sea-soft:#17302F;
-  --ochre:#D9A16A;
-  --ochre-soft:#2C2319;
-  color-scheme:dark;
-}
 
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
+  margin:0;
   background:var(--bg);
   color:var(--ink);
   font-family:var(--font-body);
-  font-weight:400;
   font-size:15px;
-  line-height:1.7;
+  line-height:1.75;
+  letter-spacing:-.005em;
+  word-break:keep-all;
   -webkit-text-size-adjust:100%;
 }
-.wrap{
-  max-width:560px;
-  margin:0 auto;
-  padding-inline:20px;
-  padding-block:0 0;
-}
+.wrap{max-width:640px;margin:0 auto;padding-inline:24px}
 
 /* ─── 히어로 ─── */
 .hero{
-  padding-block:44px 34px;
-  border-bottom:1px solid var(--line);
+  position:relative;
+  min-height:78svh;
+  display:flex;
+  align-items:flex-end;
+  color:#fff;
+  overflow:hidden;
+  background:#1B231F;
+}
+.hero img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+}
+.hero::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,16,13,.35) 0%,rgba(10,16,13,.10) 35%,rgba(10,16,13,.82) 100%);
+}
+.hero-in{
+  position:relative;z-index:1;
+  width:100%;max-width:640px;margin:0 auto;
+  padding:0 24px 40px;
 }
 .hero .kicker{
+  display:inline-block;
   font-size:12px;
-  letter-spacing:.14em;
+  letter-spacing:.2em;
   font-weight:500;
-  color:var(--sea);
-  margin:0 0 14px;
+  margin:0 0 18px;
+  padding-bottom:6px;
+  border-bottom:1px solid rgba(255,255,255,.55);
 }
 .hero h1{
   font-family:var(--font-display);
   font-weight:700;
-  font-size:34px;
-  line-height:1.3;
-  letter-spacing:-.01em;
-  margin:0 0 16px;
-  text-wrap:balance;
+  font-size:44px;
+  line-height:1.22;
+  letter-spacing:-.02em;
+  margin:0 0 18px;
 }
 .hero h1 .sub{
   display:block;
-  font-size:15px;
   font-family:var(--font-body);
+  font-size:13px;
   font-weight:400;
-  color:var(--ink-soft);
-  letter-spacing:0;
-  margin-bottom:8px;
+  letter-spacing:.02em;
+  opacity:.85;
+  margin-bottom:10px;
 }
 .hero p{
   margin:0;
-  color:var(--ink-soft);
-  font-size:14.5px;
+  font-size:15px;
+  line-height:1.8;
+  opacity:.92;
 }
 
 /* ─── 요약 ─── */
 .facts{
   list-style:none;
-  margin:26px 0 0;
-  padding:0;
+  margin:0;padding:0;
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:1px;
-  background:var(--line);
-  border:1px solid var(--line);
-  border-radius:3px;
-  overflow:hidden;
+  border-bottom:1px solid var(--line);
 }
 .facts li{
-  background:var(--surface);
-  padding:14px 14px 15px;
+  padding:20px 0 18px;
+  border-top:1px solid var(--line);
   min-width:0;
 }
+.facts li:nth-child(-n+2){border-top:0}
+.facts li:nth-child(odd){padding-right:16px}
 .facts dt{
-  font-size:11.5px;
-  letter-spacing:.08em;
+  font-size:11px;
+  letter-spacing:.16em;
   color:var(--ink-soft);
-  margin:0 0 3px;
+  margin:0 0 4px;
 }
 .facts dd{
   margin:0;
-  font-size:15px;
-  font-weight:500;
+  font-family:var(--font-display);
+  font-size:23px;
+  font-weight:700;
+  line-height:1.3;
   font-variant-numeric:tabular-nums;
 }
 .facts dd small{
   display:block;
+  font-family:var(--font-body);
   font-size:12px;
   font-weight:400;
   color:var(--ink-soft);
-  letter-spacing:0;
+  margin-top:2px;
 }
 
 /* ─── 섹션 공통 ─── */
-section{padding-block:38px}
-section + section{border-top:1px solid var(--line)}
+section{padding-block:56px 8px}
 .eyebrow{
-  font-size:11.5px;
-  letter-spacing:.16em;
+  font-size:11px;
+  letter-spacing:.24em;
   font-weight:600;
-  color:var(--ochre);
-  margin:0 0 6px;
+  color:var(--accent);
+  margin:0 0 8px;
 }
 h2{
   font-family:var(--font-display);
   font-weight:700;
-  font-size:22px;
-  margin:0 0 20px;
-  letter-spacing:-.01em;
+  font-size:28px;
+  line-height:1.3;
+  margin:0 0 28px;
+  letter-spacing:-.02em;
 }
 .note{
-  font-size:13px;
+  font-size:12.5px;
   color:var(--ink-soft);
-  margin:18px 0 0;
-  padding-left:14px;
-  border-left:2px solid var(--line);
+  margin:24px 0 0;
 }
 
 /* ─── 일정 타임라인 ─── */
-.timeline{
-  list-style:none;
-  margin:0;
-  padding:0;
-  position:relative;
-}
+.timeline{list-style:none;margin:0;padding:0;position:relative}
 .timeline::before{
   content:"";
-  position:absolute;
-  left:52px;
-  top:6px;
-  bottom:12px;
-  width:1px;
-  background:var(--line);
+  position:absolute;left:58px;top:8px;bottom:8px;
+  width:1px;background:var(--line);
 }
 .timeline li{
   position:relative;
   display:grid;
-  grid-template-columns:52px 1fr;
-  gap:0 18px;
-  padding-bottom:22px;
+  grid-template-columns:44px 1fr;
+  gap:0 30px;
+  padding-bottom:24px;
 }
 .timeline li:last-child{padding-bottom:0}
 .timeline .t{
-  font-size:13px;
+  font-size:14px;
   font-weight:600;
   font-variant-numeric:tabular-nums;
-  color:var(--ink);
   padding-top:1px;
-  white-space:nowrap;
 }
 .timeline .body{min-width:0;position:relative}
 .timeline .body::before{
   content:"";
-  position:absolute;
-  left:-18px;
-  top:9px;
-  width:7px;
-  height:7px;
-  margin-left:-3px;
+  position:absolute;left:-30px;top:9px;
+  width:9px;height:9px;margin-left:-4px;
   border-radius:50%;
-  background:var(--sea);
-  box-shadow:0 0 0 3px var(--bg);
+  background:var(--forest);
+  box-shadow:0 0 0 4px var(--bg);
 }
-.timeline .name{
-  font-weight:500;
-  font-size:15px;
-  display:block;
-}
-.timeline .desc{
-  font-size:13px;
-  color:var(--ink-soft);
-  display:block;
-  margin-top:1px;
-}
+.timeline .name{font-weight:600;font-size:16px;display:block;line-height:1.5}
+.timeline .desc{font-size:13.5px;color:var(--ink-soft);display:block;margin-top:2px}
 .timeline .dur{
-  font-size:11.5px;
-  color:var(--sea);
-  background:var(--sea-soft);
-  border-radius:2px;
-  padding:1px 6px;
-  margin-left:6px;
-  font-variant-numeric:tabular-nums;
-  white-space:nowrap;
-  display:inline-block;
-  vertical-align:1px;
+  font-size:12px;font-weight:400;color:var(--ink-soft);
+  margin-left:8px;font-variant-numeric:tabular-nums;white-space:nowrap;
 }
-/* 이동 구간 */
-.timeline li.move .body::before{
-  background:var(--bg);
-  border:1px solid var(--line);
-  box-shadow:none;
-  top:10px;
-}
-.timeline li.move{padding-bottom:18px}
+.timeline li.move{padding-bottom:20px}
 .timeline li.move .t,
-.timeline li.move .name{
-  color:var(--ink-soft);
-  font-weight:400;
-  font-size:13px;
+.timeline li.move .name{color:var(--ink-soft);font-weight:400;font-size:13.5px}
+.timeline li.move .body::before{
+  width:5px;height:5px;margin-left:-2px;top:11px;
+  background:var(--line);
 }
-/* 시작·끝 강조 */
-.timeline li.anchor .body::before{background:var(--ochre)}
+.timeline li.anchor .body::before{
+  background:var(--accent);
+  width:11px;height:11px;margin-left:-5px;top:8px;
+}
 
-/* ─── 프로그램 ─── */
-.programs{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
+/* ─── 장소 ─── */
+.programs{display:flex;flex-direction:column;counter-reset:place}
 .prog{
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:4px;
-  padding:18px 18px 19px;
+  counter-increment:place;
+  padding:34px 0 38px;
+  border-top:1px solid var(--line);
   min-width:0;
 }
+.prog:first-child{padding-top:0;border-top:0}
 .prog .top{
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:9px;
+  display:flex;flex-direction:column;gap:2px;
+  margin-bottom:16px;
+}
+.prog .time{
+  order:-1;
+  font-size:12px;letter-spacing:.06em;
+  color:var(--accent);font-weight:600;
+  font-variant-numeric:tabular-nums;
 }
 .prog h3{
   font-family:var(--font-display);
   font-weight:700;
-  font-size:17px;
-  margin:0;
-  letter-spacing:-.01em;
-  min-width:0;
+  font-size:22px;line-height:1.35;
+  margin:0;letter-spacing:-.02em;
 }
-.prog .time{
-  font-size:12px;
-  color:var(--ink-soft);
-  font-variant-numeric:tabular-nums;
-  white-space:nowrap;
-}
-.prog p{
-  margin:0;
-  font-size:14px;
-  color:var(--ink-soft);
-  line-height:1.72;
-}
-.prog .tags{
-  list-style:none;
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-  margin:12px 0 0;
-  padding:0;
-}
-.prog .tags li{
-  font-size:11.5px;
-  color:var(--ochre);
-  background:var(--ochre-soft);
-  border-radius:2px;
-  padding:2px 7px;
-  line-height:1.6;
-}
-.prog .tags li.key{
-  color:var(--surface);
-  background:var(--sea);
-  font-weight:500;
-}
-/* 사진 — 한 줄 2장, 같은 크기 */
-.shots{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:8px;
-  margin:0 0 15px;
-}
-.shots figure{
-  margin:0;
-  min-width:0;
-}
-.shots img{
+.prog h3::before{
+  content:"0" counter(place);
   display:block;
-  width:100%;
-  max-width:100%;
-  height:auto;
-  aspect-ratio:4/3;
-  object-fit:cover;
-  border-radius:3px;
-  background:var(--sea-soft);
-}
-.shots figcaption{
-  margin-top:6px;
-  font-size:11.5px;
-  line-height:1.5;
+  font-family:var(--font-body);
+  font-size:11px;font-weight:600;letter-spacing:.2em;
   color:var(--ink-soft);
+  margin-bottom:6px;
 }
+.prog p{margin:0;font-size:14.5px;color:var(--ink-soft);line-height:1.8}
+.prog .tags{
+  list-style:none;margin:14px 0 0;padding:0;
+  display:flex;flex-wrap:wrap;gap:2px 0;
+  font-size:12.5px;color:var(--ink);
+}
+.prog .tags li+li::before{content:"·";margin:0 8px;color:var(--ink-soft)}
+.prog .tags li.key{color:var(--accent);font-weight:600}
+
+/* 사진 — 한 줄 2장, 같은 크기 */
+.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:0 0 18px}
+.shots figure{margin:0;min-width:0}
+.shots img{
+  display:block;width:100%;max-width:100%;
+  height:auto;aspect-ratio:4/3;object-fit:cover;
+  border-radius:2px;background:var(--forest-soft);
+}
+.shots figcaption{margin-top:7px;font-size:11.5px;line-height:1.5;color:var(--ink-soft)}
 
 /* ─── 준비물 · 유의사항 ─── */
 h3.block{
-  font-size:13px;
-  font-weight:600;
-  letter-spacing:.02em;
-  margin:0 0 12px;
-  color:var(--ink);
+  font-family:var(--font-display);
+  font-size:19px;font-weight:700;
+  margin:0 0 14px;color:var(--ink);letter-spacing:-.01em;
 }
 .packing{
-  list-style:none;
-  margin:0 0 30px;
-  padding:0;
-  display:grid;
-  grid-template-columns:1fr;
-  gap:9px;
+  list-style:none;margin:0 0 44px;padding:0;
+  display:grid;grid-template-columns:1fr 1fr;gap:0 18px;
 }
 .packing li{
-  display:grid;
-  grid-template-columns:20px 1fr;
-  gap:9px;
-  align-items:start;
-  font-size:14px;
-  min-width:0;
+  padding:14px 0;
+  border-top:1px solid var(--line);
+  font-size:14.5px;min-width:0;
 }
-.packing li::before{
-  content:"";
-  width:14px;
-  height:14px;
-  margin-top:5px;
-  border:1.5px solid var(--sea);
-  border-radius:2px;
-}
-.packing li b{
-  font-weight:500;
-}
-.packing li span{
-  display:block;
-  font-size:12.5px;
-  color:var(--ink-soft);
-  line-height:1.6;
-}
+.packing li b{font-weight:600;display:block}
+.packing li span{display:block;font-size:12.5px;color:var(--ink-soft);line-height:1.6;margin-top:2px}
 .rules{
-  list-style:none;
-  margin:0;
-  padding:0;
-  display:flex;
-  flex-direction:column;
-  gap:11px;
+  list-style:none;margin:0;padding:0;
+  counter-reset:rule;
 }
 .rules li{
-  display:grid;
-  grid-template-columns:auto 1fr;
-  gap:10px;
-  font-size:13.5px;
-  color:var(--ink-soft);
-  line-height:1.68;
-  min-width:0;
+  counter-increment:rule;
+  display:grid;grid-template-columns:28px 1fr;
+  padding:14px 0;
+  border-top:1px solid var(--line);
+  font-size:14px;color:var(--ink-soft);line-height:1.75;min-width:0;
 }
 .rules li::before{
-  content:"—";
-  color:var(--sea);
+  content:counter(rule,decimal-leading-zero);
+  font-size:11px;font-weight:600;letter-spacing:.08em;
+  color:var(--accent);padding-top:3px;
 }
-.rules b{color:var(--ink);font-weight:500}
+.rules b{color:var(--ink);font-weight:600}
 
 /* ─── 문의 ─── */
 .contact{
-  background:var(--surface);
-  border:1px solid var(--line);
+  background:var(--forest);
+  color:#F4F1EA;
   border-radius:4px;
-  padding:24px 20px 22px;
+  padding:34px 24px 26px;
   text-align:center;
 }
-.contact p{
-  margin:0 0 18px;
-  font-size:14px;
-  color:var(--ink-soft);
-}
+.contact p{margin:0 0 22px;font-size:15px;line-height:1.8;color:#F4F1EA}
 .kakao{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
   width:100%;
-  background:#FEE500;
-  color:#191600;
-  font-family:var(--font-body);
-  font-weight:600;
-  font-size:15.5px;
+  background:#FEE500;color:#191600;
+  font-family:var(--font-body);font-weight:700;font-size:15.5px;
   text-decoration:none;
-  padding:15px 18px;
-  border-radius:4px;
-  line-height:1.2;
+  padding:16px 18px;border-radius:4px;line-height:1.2;
 }
-.kakao:focus-visible{outline:2px solid var(--sea);outline-offset:3px}
+.kakao:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .kakao svg{flex:none}
-.contact .hours{
-  margin:13px 0 0;
-  font-size:13px;
-  color:var(--ink-soft);
-}
-.contact .hours b{
-  color:var(--ink);
-  font-weight:500;
-  font-variant-numeric:tabular-nums;
-}
+.contact .hours{margin:16px 0 0;font-size:13px;color:#F4F1EA;opacity:.85}
+.contact .hours b{font-weight:600;font-variant-numeric:tabular-nums}
 .contact .host{
-  margin:17px 0 0;
-  padding-top:15px;
-  border-top:1px solid var(--line);
-  font-size:12.5px;
-  color:var(--ink-soft);
+  margin:22px 0 0;padding-top:18px;
+  border-top:1px solid rgba(244,241,234,.25);
+  font-size:12px;line-height:1.8;color:#F4F1EA;opacity:.75;
 }
 
 footer{
-  padding-block:26px 34px;
-  border-top:1px solid var(--line);
-  font-size:12px;
-  color:var(--ink-soft);
-  line-height:1.8;
+  padding-block:44px 34px;
+  font-size:12px;color:var(--ink-soft);line-height:1.9;
 }
-footer .org{color:var(--ink);font-weight:500}
+footer .org{color:var(--ink);font-weight:600}
 
 /* 하단 고정 바 */
 .bar{
-  position:fixed;
-  left:0;right:0;bottom:0;
-  background:var(--surface);
-  border-top:1px solid var(--line);
-  padding:10px 20px;
+  position:fixed;left:0;right:0;bottom:0;z-index:20;
+  background:rgba(20,28,24,.94);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:#F4F1EA;
+  padding:10px 24px;
   padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));
-  z-index:20;
 }
-.bar .inner{
-  max-width:520px;
-  margin:0 auto;
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.bar .when{
-  font-size:12.5px;
-  line-height:1.35;
-  min-width:0;
-  flex:1;
-}
-.bar .when b{display:block;font-weight:600;font-size:13px}
-.bar .when span{color:var(--ink-soft)}
-.bar .kakao{
-  width:auto;
-  flex:none;
-  padding:11px 16px;
-  font-size:14px;
-}
-.tailspace{height:82px}
+.bar .inner{max-width:592px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.bar .when{font-size:12px;line-height:1.4;min-width:0;flex:1}
+.bar .when b{display:block;font-weight:600;font-size:13.5px}
+.bar .when span{opacity:.7}
+.bar .kakao{width:auto;flex:none;padding:11px 18px;font-size:14px}
+.tailspace{height:76px}
 
-a{color:var(--sea)}
-:focus-visible{outline:2px solid var(--sea);outline-offset:2px}
+a{color:var(--forest)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 @media (min-width:600px){
-  body{font-size:15.5px}
-  .hero h1{font-size:40px}
-  .packing{grid-template-columns:1fr 1fr;gap:12px 18px}
+  body{font-size:16px}
+  .hero{min-height:82svh}
+  .hero h1{font-size:60px}
+  .hero p{font-size:17px}
+  h2{font-size:32px}
 }
 @media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
   *{animation:none!important;transition:none!important}
 }
 </style>
 
-<div class="wrap">
-
-  <header class="hero">
+<header class="hero">
+  <img src="img/gaehwa-1.jpg" alt="" width="1280" height="960">
+  <div class="hero-in">
     <p class="kicker">2026. 10. 24. SAT</p>
     <h1><span class="sub">건설근로자공제회 대전지사 회원 가족</span>원산도 힐링 여행</h1>
-    <p>탄광의 기억이 남은 성주산에서 허브 향 가득한 정원을 지나,<br>해저터널 건너 원산도 바다까지.<br>가족과 함께 하는 힐링 여행</p>
+    <p>탄광의 기억이 남은 성주산에서<br>허브 향 가득한 정원을 지나,<br>해저터널 건너 원산도 바다까지.<br>가족과 함께 하는 힐링 여행</p>
+  </div>
+</header>
 
-    <ul class="facts">
+<div class="wrap">
+
+  <ul class="facts">
       <li><dt>집결</dt><dd>08:00<small>건설근로자공제회 대전지사</small></dd></li>
-      <li><dt>출발</dt><dd>08:20<small>A호차 · B호차</small></dd></li>
+      <li><dt>출발</dt><dd>08:20<small>45인승 버스로 이동</small></dd></li>
       <li><dt>도착</dt><dd>18:00<small>대전지사 해산</small></dd></li>
       <li><dt>중식</dt><dd>메뉴 선택<small>꽃비빔밥 · 수제 돈까스</small></dd></li>
     </ul>
-  </header>
 
   <section>
     <p class="eyebrow">SCHEDULE</p>
