@@ -307,29 +307,22 @@ h2{
   background:var(--sea);
   font-weight:500;
 }
-/* 사진 띠 — 카드 가장자리까지 흘려보내고 가로 스크롤 */
+/* 사진 — 한 줄 2장, 같은 크기 */
 .shots{
-  display:flex;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
   gap:8px;
-  margin:0 -18px 15px;
-  padding:0 18px;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
+  margin:0 0 15px;
 }
-.shots::-webkit-scrollbar{display:none}
 .shots figure{
-  flex:0 0 78%;
   margin:0;
   min-width:0;
-  scroll-snap-align:start;
 }
-.shots.one figure{flex:0 0 100%}
 .shots img{
   display:block;
   width:100%;
   max-width:100%;
+  height:auto;
   aspect-ratio:4/3;
   object-fit:cover;
   border-radius:3px;
@@ -618,6 +611,10 @@ a{color:var(--sea)}
 
       <article class="prog">
         <div class="top"><h3>개화예술공원</h3><span class="time">11:00 – 13:20</span></div>
+        <div class="shots">
+          <figure><img src="img/gaehwa-1.jpg" alt="전구가 걸린 은행나무 사이로 붉은 벤치와 그네가 놓인 개화예술공원 정원" loading="lazy" width="900" height="675"><figcaption>공원 정원</figcaption></figure>
+          <figure><img src="img/gaehwa-2.jpg" alt="드라이플라워와 조명이 천장 가득 매달린 리리스 카페 내부" loading="lazy" width="900" height="675"><figcaption>리리스 카페</figcaption></figure>
+        </div>
         <p>공원 산책 및 관람과 바둑이네 동물원을 함께 둘러봅니다. 허브 티백 만들기 체험은 아이들 위주로 진행되며 어른도 신청하실 수 있습니다. 체험 프로그램을 신청하지 않으신 어른은 리리스 카페 음료로 대체 가능합니다. 점심은 공원 안 허브 꽃밥집에서 먹습니다.</p>
         <ul class="tags"><li>공원 산책</li><li>바둑이네 동물원</li><li>허브 티백 체험</li><li>리리스 카페</li><li>중식</li></ul>
       </article>
@@ -634,7 +631,7 @@ a{color:var(--sea)}
 
       <article class="prog">
         <div class="top"><h3>원산도해수욕장 데크길</h3><span class="time">15:15 – 15:55</span></div>
-        <div class="shots one">
+        <div class="shots">
           <figure><img src="img/deck-1.jpg" alt="바다를 끼고 곶을 따라 굽이지게 놓인 원산도해수욕장 데크길 항공 사진" loading="lazy" width="900" height="675"><figcaption>백사장과 바위 곶을 잇는 데크길</figcaption></figure>
         </div>
         <p>데크길을 가족과 함께 걷습니다. 도착 직후 단체사진을 찍고 남은 시간은 자유롭게 산책합니다. 10월 하순 서해 바닷바람이 강하니 겉옷을 꼭 챙겨 주세요.</p>
